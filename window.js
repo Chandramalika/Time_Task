@@ -52,6 +52,14 @@ var addTimer = () => {
     container.appendChild(timer);
 };
 
+var addRockPaperScissors = () => {
+    container = document.getElementById('main-container');
+    rockPS = create(
+        `<div class="part-container rockPS" onmousedown = "goTop(this)" style="z-index:${returnTop()}"><div class="drag-bar" onmousedown="dragStart(this)"><p>Rock Paper Scissors</p></div><button onclick="closeWindow(this)">×</button><iframe src="Parts/RockPaperScissors/index.html"></iframe></div>`
+    );
+    container.appendChild(rockPS);
+};
+
 //deletes window
 var closeWindow = (element) => {
     element.parentNode.remove();
@@ -203,6 +211,16 @@ function loadWindows() {
                                 .height}"><div class="drag-bar" onmousedown="dragStart(this)"><p>Timer/Clock</p></div><button onclick="closeWindow(this)">×</button><iframe src="Parts/ClockTimer/index.html"></iframe></div>`
                 );
                 container.appendChild(timer);
+            case 'rockPS':
+                rockPS = create(
+                    `<div class="part-container rockPS" onmousedown = "goTop(this)" style="z-index:${savedata[i]
+                        .zI};left:${savedata[i].posX};top:${savedata[i].posY};width:${savedata[i]
+                            .width};height:${savedata[i]
+                                .height}"><div class="drag-bar" onmousedown="dragStart(this)"><p>Rock Paper Scissors</p></div><button onclick="closeWindow(this)">×</button><iframe src="Parts/RockPaperScissors/index.html"></iframe></div>`
+                );
+                container.appendChild(rockPS);
+                break;
+
         }
     }
 }
@@ -268,6 +286,9 @@ window.addEventListener('keydown', function (event) {
         addSnake()
     }
 
+    if (event.shiftKey && event.keyCode == 87) {
+        addRockPaperScissors()
+    }
     // if(event.ctrlKey && event.keyCode == 82){
     //     event.preventDefault()
     //     if(updatePageRotation){

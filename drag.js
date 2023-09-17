@@ -1,5 +1,5 @@
 var draggedElement; //element that's dragged
-var xOffset = 10; //the defualt offset of the elements
+var xOffset = 10; //the default offset of the elements
 var yOffset = 10;
 
 //calls function when mouse in down
@@ -34,7 +34,7 @@ function dragStart(element) {
 }
 
 function drag(e) {
-	//called ever time the mouse moves and moves the window to the mouse
+	//called every time the mouse moves and moves the window to the mouse
 	draggedElement.parentNode.style.left = (e.pageX - xOffset) + "px";
 	//makes it not possible to drag under the header
 	if (e.pageY > 70)
